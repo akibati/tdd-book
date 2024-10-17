@@ -1,10 +1,10 @@
 ﻿namespace TDD
 {
-    public class Dollar
+    public class Franc
     {
         private readonly int _amount;
 
-        public Dollar(int amount)
+        public Franc(int amount)
         {
             _amount = amount;
         }
@@ -14,16 +14,16 @@
             get { return _amount; }
         }
 
-        public Dollar Times(int multiplier)
+        public Franc Times(int multiplier)
         {
-            return new Dollar(_amount * multiplier);
+            return new Franc(_amount * multiplier);
         }
 
         public override Boolean Equals(Object? obj)
         {
-            if (obj is Dollar dollar)
+            if (obj is Franc franc)
             {
-                return _amount == dollar.Amount;
+                return _amount == franc.Amount;
             }
             return false;
         }

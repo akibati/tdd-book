@@ -24,5 +24,13 @@ namespace TDDTest.Tests
             Assert.That(new Dollar(5).Equals(new Dollar(5)), Is.True);
             Assert.That(new Dollar(5).Equals(new Dollar(6)), Is.False);
         }
+
+        [Test]
+        public void FrancMultiplication()
+        {
+            Franc five = new Franc(5);
+            Assert.That(five.Times(2), Is.EqualTo(new Franc(10)));
+            Assert.That(five.Times(3), Is.EqualTo(new Franc(15)));
+        }
     }
 }
