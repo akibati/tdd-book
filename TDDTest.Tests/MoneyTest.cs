@@ -41,5 +41,11 @@ namespace TDDTest.Tests
             Assert.That(Money.Dollar(1).Currency, Is.EqualTo("USD"));
             Assert.That(Money.Franc(1).Currency, Is.EqualTo("CHF"));
         }
+
+        [Test]
+        public void DifferentClassEquality()
+        {
+            Assert.That(new Money(10, "CHF").Equals(new Franc(10, "CHF")), Is.True);
+        }
     }
 }

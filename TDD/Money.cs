@@ -1,6 +1,6 @@
 ﻿namespace TDD
 {
-    public abstract class Money
+    public class Money
     {
         protected int _amount;
         protected string _currency;
@@ -11,18 +11,19 @@
             _currency = currency;
         }
 
-        public abstract Money Times(int multiplier);
-
         public int Amount { get { return _amount; } }
         public string Currency { get { return _currency; } }
 
-
+        public Money Times(int multiplier)
+        {
+            return new Money(multiplier * _amount, _currency);
+        }
 
         public override Boolean Equals(Object? obj)
         {
             if (obj is Money money)
             {
-                return _amount == money.Amount && GetType() == money.GetType();
+                return _amount == money.Amount && _currency.Equals(money.Currency);
             }
             return false;
         }
