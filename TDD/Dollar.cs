@@ -2,14 +2,11 @@
 {
     public class Dollar : Money
     {
-        public Dollar(int amount)
-        {
-            _amount = amount;
-        }
+        public Dollar(int amount, string currency) : base(amount, currency) { }
 
         public override Dollar Times(int multiplier)
         {
-            return new Dollar(_amount * multiplier);
+            return new Dollar(_amount * multiplier, _currency);
         }
     }
 }

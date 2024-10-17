@@ -1,4 +1,3 @@
-using System.Net.Http.Headers;
 using TDD;
 
 namespace TDDTest.Tests
@@ -34,6 +33,13 @@ namespace TDDTest.Tests
             Money five = Money.Franc(5);
             Assert.That(five.Times(2), Is.EqualTo(Money.Franc(10)));
             Assert.That(five.Times(3), Is.EqualTo(Money.Franc(15)));
+        }
+
+        [Test]
+        public void Currency()
+        {
+            Assert.That(Money.Dollar(1).Currency, Is.EqualTo("USD"));
+            Assert.That(Money.Franc(1).Currency, Is.EqualTo("CHF"));
         }
     }
 }

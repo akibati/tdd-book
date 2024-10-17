@@ -3,12 +3,20 @@
     public abstract class Money
     {
         protected int _amount;
+        protected string _currency;
+
+        public Money(int amount, string currency)
+        {
+            _amount = amount;
+            _currency = currency;
+        }
+
         public abstract Money Times(int multiplier);
 
-        public int Amount
-        {
-            get { return _amount; }
-        }
+        public int Amount { get { return _amount; } }
+        public string Currency { get { return _currency; } }
+
+
 
         public override Boolean Equals(Object? obj)
         {
@@ -26,12 +34,12 @@
 
         public static Money Dollar(int amount)
         {
-            return new Dollar(amount);
+            return new Dollar(amount, "USD");
         }
 
         public static Money Franc(int amount)
         {
-            return new Franc(amount);
+            return new Franc(amount, "CHF");
         }
     }
 }
