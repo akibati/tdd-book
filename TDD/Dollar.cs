@@ -18,5 +18,11 @@
         {
             return new Dollar(_amount * multiplier);
         }
+
+        public new Boolean Equals(Object obj)
+        {
+            Dollar dollar = (Dollar)obj;
+            return _amount == dollar.Amount;
+        }
     }
 }

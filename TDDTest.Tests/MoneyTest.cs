@@ -19,5 +19,12 @@ namespace TDDTest.Tests
             product = five.Times(3);
             Assert.That(product.Amount, Is.EqualTo(15));
         }
+
+        [Test]
+        public void Equality()
+        {
+            Assert.That(new Dollar(5).Equals(new Dollar(5)), Is.True);
+            Assert.That(new Dollar(5).Equals(new Dollar(6)), Is.False);
+        }
     }
 }
