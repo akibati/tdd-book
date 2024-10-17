@@ -7,7 +7,7 @@
             _amount = amount;
         }
 
-        public Dollar Times(int multiplier)
+        public override Dollar Times(int multiplier)
         {
             return new Dollar(_amount * multiplier);
         }
