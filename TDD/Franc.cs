@@ -1,17 +1,10 @@
 ﻿namespace TDD
 {
-    public class Franc
+    public class Franc : Money
     {
-        private readonly int _amount;
-
         public Franc(int amount)
         {
             _amount = amount;
-        }
-
-        public int Amount
-        {
-            get { return _amount; }
         }
 
         public Franc Times(int multiplier)
