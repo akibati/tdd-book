@@ -1,6 +1,6 @@
 ﻿namespace TDD
 {
-    public class Money
+    public class Money : IExpression
     {
         protected int _amount;
         protected string _currency;
@@ -17,6 +17,11 @@
         public Money Times(int multiplier)
         {
             return new Money(multiplier * _amount, _currency);
+        }
+
+        public IExpression Plus(Money addend)
+        {
+            return new Money(_amount + addend.Amount, _currency);
         }
 
         public override Boolean Equals(Object? obj)

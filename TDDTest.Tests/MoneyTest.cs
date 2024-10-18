@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using TDD;
 
 namespace TDDTest.Tests
@@ -30,6 +31,16 @@ namespace TDDTest.Tests
         {
             Assert.That(Money.Dollar(1).Currency, Is.EqualTo("USD"));
             Assert.That(Money.Franc(1).Currency, Is.EqualTo("CHF"));
+        }
+
+        [Test]
+        public void SimpleAddition()
+        {
+            Money five = Money.Dollar(5);
+            IExpression sum = five.Plus(five);
+            Bank bank = new Bank();
+            Money reduced = bank.Reduce((IExpression)sum, "USD");
+            Assert.That(reduced, Is.EqualTo(Money.Dollar(10)));
         }
     }
 }
