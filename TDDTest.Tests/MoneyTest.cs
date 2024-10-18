@@ -42,5 +42,33 @@ namespace TDDTest.Tests
             Money reduced = bank.Reduce((IExpression)sum, "USD");
             Assert.That(reduced, Is.EqualTo(Money.Dollar(10)));
         }
+
+        [Test]
+        public void PlusReturnsSum()
+        {
+            Money five = Money.Dollar(5);
+            IExpression result = five.Plus(five);
+            Sum sum = (Sum)result;
+            Assert.That(sum._augend, Is.EqualTo(five));
+            Assert.That(sum._addend, Is.EqualTo(five));
+        }
+
+        [Test]
+        public void ReduceSum()
+        {
+            IExpression sum = new Sum(Money.Dollar(3), Money.Dollar(4));
+            Bank bank = new Bank();
+            Money result = bank.Reduce(sum, "USD");
+            Assert.That(result, Is.EqualTo(Money.Dollar(7)));
+        }
+
+        [Test]
+        public void ReduceMoney()
+        {
+            Bank bank = new Bank();
+            Money result = bank.Reduce(Money.Dollar(1), "USD");
+            Assert.That(result, Is.EqualTo(Money.Dollar(1)));
+            Sum sum = new Sum(Money.Dollar(1), Money.Dollar(1));
+        }
     }
 }

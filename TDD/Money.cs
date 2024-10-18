@@ -21,7 +21,12 @@
 
         public IExpression Plus(Money addend)
         {
-            return new Money(_amount + addend.Amount, _currency);
+            return new Sum(this, addend);
+        }
+
+        public Money Reduce(string to)
+        {
+            return this;
         }
 
         public override Boolean Equals(Object? obj)
