@@ -95,5 +95,29 @@ namespace TDDTest.Tests
             Money result = bank.Reduce(fiveDollars.Plus(tenFrancs), "USD");
             Assert.That(result, Is.EqualTo(Money.Dollar(10)));
         }
+
+        [Test]
+        public void SumPlusMoney()
+        {
+            IExpression fiveDollars = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            Bank bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            IExpression sum = new Sum(fiveDollars, tenFrancs).Plus(fiveDollars);
+            Money result = bank.Reduce(sum, "USD");
+            Assert.That(result, Is.EqualTo(Money.Dollar(15)));
+        }
+
+        [Test]
+        public void SumTimes()
+        {
+            IExpression fiveDollars = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            Bank bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            IExpression sum = new Sum(fiveDollars, tenFrancs).Times(2);
+            Money result = bank.Reduce(sum, "USD");
+            Assert.That(result, Is.EqualTo(Money.Dollar(20)));
+        }
     }
 }

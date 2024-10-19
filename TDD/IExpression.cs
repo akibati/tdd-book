@@ -9,6 +9,7 @@ namespace TDD
 {
     public interface IExpression
     {
+        IExpression Times(int multiplier);
         IExpression Plus(IExpression addend);
         Money Reduce(Bank bank, string to);
     }
