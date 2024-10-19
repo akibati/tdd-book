@@ -17,7 +17,7 @@ namespace TDD
             _addend = addend;
         }
 
-        public Money Reduce(string to)
+        public Money Reduce(Bank bank, string to)
         {
             int amount = _augend.Amount + _addend.Amount;
             return new Money(amount, to);

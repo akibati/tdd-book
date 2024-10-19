@@ -24,9 +24,10 @@
             return new Sum(this, addend);
         }
 
-        public Money Reduce(string to)
+        public Money Reduce(Bank bank, string to)
         {
-            return this;
+            int rate = bank.Rate(_currency, to);
+            return new Money(_amount / rate, to);
         }
 
         public override Boolean Equals(Object? obj)

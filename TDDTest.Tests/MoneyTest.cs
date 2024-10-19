@@ -68,7 +68,21 @@ namespace TDDTest.Tests
             Bank bank = new Bank();
             Money result = bank.Reduce(Money.Dollar(1), "USD");
             Assert.That(result, Is.EqualTo(Money.Dollar(1)));
-            Sum sum = new Sum(Money.Dollar(1), Money.Dollar(1));
+        }
+
+        [Test]
+        public void ReduceMoneyDifferentCurrency()
+        {
+            Bank bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            Money result = bank.Reduce(Money.Franc(2), "USD");
+            Assert.That(result, Is.EqualTo(Money.Dollar(1)));
+        }
+
+        [Test]
+        public void IdentityRate()
+        {
+            Assert.That(new Bank().Rate("USD", "USD"), Is.EqualTo(1));
         }
     }
 }
