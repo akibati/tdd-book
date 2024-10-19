@@ -14,12 +14,12 @@
         public int Amount { get { return _amount; } }
         public string Currency { get { return _currency; } }
 
-        public Money Times(int multiplier)
+        public IExpression Times(int multiplier)
         {
             return new Money(multiplier * _amount, _currency);
         }
 
-        public IExpression Plus(Money addend)
+        public IExpression Plus(IExpression addend)
         {
             return new Sum(this, addend);
         }
